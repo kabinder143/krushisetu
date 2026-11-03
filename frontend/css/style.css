@@ -1,0 +1,312 @@
+/* KrushiSetu Dashboard - Main Styles */
+
+:root {
+    --primary-green: #176b45;
+    --dark-green: #104b32;
+    --light-green: #e8f5ed;
+    --page-background: #f4f7f5;
+    --text-dark: #26352d;
+    --text-muted: #77847c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--page-background);
+    color: var(--text-dark);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: var(--dark-green);
+    color: white;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.brand {
+    padding: 0 10px 35px;
+}
+
+.brand h3 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.brand small {
+    color: #c1ddcc;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-menu a {
+    color: #d6e8dc;
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: var(--primary-green);
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px 10px 0;
+    color: #c1ddcc;
+}
+
+/* Main content */
+
+.main-content {
+    flex: 1;
+    padding: 30px 38px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.topbar h4 {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.topbar p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 14px;
+}
+
+.environment-badge {
+    background: var(--light-green);
+    color: var(--primary-green);
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Dashboard sections */
+
+.dashboard-section {
+    margin-bottom: 30px;
+}
+
+.dashboard-section h5 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* Summary cards */
+
+.stat-card {
+    background: white;
+    border: 1px solid #e8eee9;
+    border-radius: 12px;
+    padding: 23px;
+    height: 100%;
+    box-shadow: 0 3px 12px rgba(20, 60, 35, 0.035);
+}
+
+.stat-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.stat-card h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-card small {
+    color: var(--text-muted);
+}
+
+.status-online {
+    color: var(--primary-green);
+    font-size: 25px !important;
+}
+
+/* Action cards */
+
+.action-card {
+    background: white;
+    border: 1px solid #e8eee9;
+    border-radius: 12px;
+    padding: 25px;
+    height: 100%;
+    box-shadow: 0 3px 12px rgba(20, 60, 35, 0.035);
+}
+
+.action-card h5 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.action-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    min-height: 42px;
+    line-height: 1.6;
+}
+
+.btn-success {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+    background: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+/* Activity */
+
+.activity-card {
+    background: white;
+    border: 1px solid #e8eee9;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.activity-card p {
+    font-weight: 600;
+}
+
+.activity-card small {
+    color: var(--text-muted);
+}
+
+/* Footer */
+
+.footer {
+    border-top: 1px solid #e2e9e4;
+    padding-top: 20px;
+    margin-top: 35px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .brand {
+        padding: 0 5px 15px;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 22px 16px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Farmer Records Page */
+
+.action-card {
+    background: #ffffff;
+    border: 1px solid #e8eee9;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 12px rgba(20, 60, 35, 0.035);
+}
+
+.records-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.records-toolbar h5 {
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.records-toolbar p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #e8f5ed;
+    color: var(--dark-green);
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.table tbody td {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .records-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+}

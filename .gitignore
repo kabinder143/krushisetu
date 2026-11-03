@@ -1,0 +1,32 @@
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+*.ini
+*.pem
+*.key
+*.p12
+*.jks
+
+# Java build files
+**/target/
+*.class
+
+# Logs
+*.log
+logs/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backups
+*.bak
+*.bak-*
+*.pre-*
+*~

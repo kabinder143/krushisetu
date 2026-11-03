@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrushiSetu | Benefit Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h3>🌾 KrushiSetu</h3>
+            <small>Farmer Services Portal</small>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html">Dashboard</a>
+            <a href="farmers.html">Farmer Registration</a>
+            <a href="records.html">Farmer Records</a>
+            <a href="benefits.html" class="active">Benefit Management</a>
+            <a href="#">Event Monitoring</a>
+            <a href="#">System Information</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <small>Learning & Demo Application</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h4>Benefit Management</h4>
+                <p>Manage farmer benefit status and transaction history</p>
+            </div>
+            <span class="environment-badge">DEMO ENVIRONMENT</span>
+        </header>
+
+        <section class="dashboard-section">
+
+            <!-- Summary Cards -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <p>Total Benefit Records</p>
+                        <h2 id="totalBenefits">--</h2>
+                        <small>Retrieved from PostgreSQL</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <p>Pending</p>
+                        <h2 id="pendingBenefits">--</h2>
+                        <small>Awaiting processing</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <p>Approved</p>
+                        <h2 id="approvedBenefits">--</h2>
+                        <small>Approved benefit records</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <p>Disbursed</p>
+                        <h2 id="disbursedBenefits">--</h2>
+                        <small>Disbursed benefit records</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Update Benefit Status -->
+            <div class="action-card mb-4">
+
+                <h5>Update Benefit Status</h5>
+                <p>Select a registered farmer and publish a benefit status event.</p>
+
+                <form id="benefitForm">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label for="farmerSelect" class="form-label">
+                                Select Farmer
+                            </label>
+
+                            <select id="farmerSelect" class="form-select" required>
+                                <option value="">Loading farmers...</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="benefitStatus" class="form-label">
+                                Benefit Status
+                            </label>
+
+                            <select id="benefitStatus" class="form-select" required>
+                                <option value="">Select status</option>
+                                <option value="PENDING">PENDING</option>
+                                <option value="APPROVED">APPROVED</option>
+                                <option value="REJECTED">REJECTED</option>
+                                <option value="DISBURSED">DISBURSED</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <button
+                                type="submit"
+                                class="btn btn-success"
+                                id="submitBenefit">
+                                Submit Benefit Status
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <div id="benefitMessage" class="mt-3" aria-live="polite"></div>
+
+            </div>
+
+            <!-- Benefit History -->
+            <div class="action-card">
+
+                <div class="records-toolbar">
+                    <div>
+                        <h5>Benefit Transaction History</h5>
+                        <p>View benefit events recorded in PostgreSQL.</p>
+                    </div>
+
+                    <button class="btn btn-success" id="refreshBenefits" type="button">
+                        ↻ Refresh History
+                    </button>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        type="search"
+                        id="benefitSearch"
+                        class="form-control"
+                        placeholder="Search by farmer ID, name or district..."
+                        aria-label="Search benefit history">
+                </div>
+
+                <div id="historyMessage" class="mb-3" aria-live="polite"></div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>Farmer ID</th>
+                                <th>Farmer Name</th>
+                                <th>District</th>
+                                <th>Benefit Status</th>
+                                <th>Event ID</th>
+                                <th>Updated At (UTC)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="benefitTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    Loading benefit history...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <small class="text-muted" id="benefitRecordCount"></small>
+
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            KrushiSetu Demo Project | Java · PHP · Kafka · PostgreSQL
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="js/benefits.js"></script>
+
+</body>
+</html>

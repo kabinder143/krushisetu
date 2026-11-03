@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Monitoring | KrushiSetu</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h4>🌾 KrushiSetu</h4>
+            <small>Farmer Services Portal</small>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html">Dashboard</a>
+            <a href="farmers.html">Farmer Registration</a>
+            <a href="records.html">Farmer Records</a>
+            <a href="benefits.html">Benefit Management</a>
+            <a href="events.html" class="active">Event Monitoring</a>
+            <a href="system.html">System Information</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h4>Event Monitoring</h4>
+                <small>Kafka event processing and history</small>
+            </div>
+
+            <span class="environment-badge">DEMO ENVIRONMENT</span>
+        </header>
+
+        <section class="dashboard-section">
+
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <div>
+                    <h5>Event Overview</h5>
+                    <p class="text-muted mb-0">
+                        Monitor application events from Kafka and PostgreSQL.
+                    </p>
+                </div>
+
+                <button id="refreshButton" class="btn btn-success">
+                    ↻ Refresh Events
+                </button>
+            </div>
+
+            <div id="eventMessage" class="alert d-none" role="status"></div>
+
+            <!-- Statistics -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <h6>Total Events</h6>
+                        <h3 id="totalEvents">--</h3>
+                        <small>Recorded event receipts</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <h6>Event Types</h6>
+                        <h3 id="totalEventTypes">--</h3>
+                        <small>Distinct event types</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <h6>Farmer Registrations</h6>
+                        <h3 id="farmerEvents">--</h3>
+                        <small>farmer.registered</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <h6>Benefit Updates</h6>
+                        <h3 id="benefitEvents">--</h3>
+                        <small>benefit.status.updated</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Kafka Topic Statistics -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="mb-3">Kafka Topic Statistics</h5>
+
+                    <div id="topicStatistics" class="row g-3">
+                        <div class="col-12 text-muted">
+                            Loading topic statistics...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event History -->
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                        <div>
+                            <h5 class="mb-1">Event History</h5>
+                            <small class="text-muted">
+                                Actual processed event receipts
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+
+                        <div class="col-md-5">
+                            <input
+                                type="text"
+                                id="searchInput"
+                                class="form-control"
+                                placeholder="Search Farmer ID or Event ID">
+                        </div>
+
+                        <div class="col-md-4">
+                            <select id="eventTypeFilter" class="form-select">
+                                <option value="">All Event Types</option>
+                                <option value="FarmerRegistered">
+                                    FarmerRegistered
+                                </option>
+                                <option value="BenefitStatusUpdated">
+                                    BenefitStatusUpdated
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select id="pageLimit" class="form-select">
+                                <option value="10">10 records</option>
+                                <option value="20" selected>20 records</option>
+                                <option value="50">50 records</option>
+                                <option value="100">100 records</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Event Type</th>
+                                    <th>Farmer ID</th>
+                                    <th>Kafka Topic</th>
+                                    <th>Partition</th>
+                                    <th>Offset</th>
+                                    <th>Processed At (UTC)</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="eventTableBody">
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted">
+                                        Loading events...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-3">
+
+                        <small id="paginationInfo" class="text-muted">
+                            Loading...
+                        </small>
+
+                        <div class="d-flex gap-2">
+                            <button id="previousPage"
+                                    class="btn btn-outline-success btn-sm">
+                                Previous
+                            </button>
+
+                            <button id="nextPage"
+                                    class="btn btn-outline-success btn-sm">
+                                Next
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            KrushiSetu Demo Project | Java · PHP · Kafka · PostgreSQL
+        </footer>
+
+    </main>
+</div>
+
+<script src="js/events.js"></script>
+</body>
+</html>

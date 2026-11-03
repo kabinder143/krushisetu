@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrushiSetu | Farmer Registration</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h3>🌾 KrushiSetu</h3>
+            <small>Farmer Services Portal</small>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html">Dashboard</a>
+            <a href="farmers.html" class="active">Farmer Registration</a>
+            <a href="benefits.html">Benefit Management</a>
+            <a href="#">Event Monitoring</a>
+            <a href="#">System Information</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <small>Learning & Demo Application</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h4>Farmer Registration</h4>
+                <p>Register a new farmer in KrushiSetu</p>
+            </div>
+            <span class="environment-badge">DEMO ENVIRONMENT</span>
+        </header>
+
+        <section class="dashboard-section">
+            <div class="action-card">
+
+                <h5>Farmer Information</h5>
+                <p>Enter the farmer details below to submit a registration.</p>
+
+                <form id="farmerForm">
+
+                    <div class="mb-3">
+                        <label for="farmerName" class="form-label">Farmer Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="farmerName"
+                            name="farmerName"
+                            placeholder="Enter farmer name"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="district" class="form-label">District</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="district"
+                            name="district"
+                            placeholder="Enter district"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="village" class="form-label">Village</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="village"
+                            name="village"
+                            placeholder="Enter village"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        Register Farmer
+                    </button>
+
+                    <button type="reset" class="btn btn-secondary ms-2">
+                        Clear Form
+                    </button>
+
+                </form>
+
+                <div id="registrationResult" class="mt-4" aria-live="polite"></div>
+
+            </div>
+        </section>
+
+        <footer class="footer">
+            KrushiSetu Demo Project | Java · PHP · Kafka · PostgreSQL
+        </footer>
+
+    </main>
+</div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
