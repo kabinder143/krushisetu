@@ -143,3 +143,28 @@ Developed and tested on Ubuntu 24.04 LTS running in a Proxmox LXC container.
 Infrastructure & DevOps Engineering Project
 
 KrushiSetu demonstrates the integration of backend development, event-driven architecture, databases, Linux infrastructure, and monitoring.
+---
+
+## Application Screenshots
+
+### 1. Farmer Registration
+![Farmer Registration](docs/screenshots/farmer-registration.png)
+
+### 2. Farmer Records
+![Farmer Records](docs/screenshots/farmer-records.png)
+
+### 3. Benefit Management
+![Benefit Management](docs/screenshots/benefit-management.png)
+
+### 4. Event Monitoring Overview
+![Event Monitoring Overview](docs/screenshots/Event%20Monitoring1.png.png)
+
+### 5. Event History and Search
+![Event History and Search](docs/screenshots/Event%20Monitoring2.png.png)
+
+---
+
+## Project Demonstration
+
+KrushiSetu is a learning and demonstration project showcasing integration between Java, PHP, Apache Kafka, PostgreSQL, and infrastructure monitoring tools.
+
