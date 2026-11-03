@@ -148,7 +148,7 @@ KrushiSetu demonstrates the integration of backend development, event-driven arc
 ## Application Screenshots
 
 ### 1. Farmer Registration
-![Farmer Registeration](docs/screenshots/Farmer%20Registration.png)
+![Farmer Registration](docs/screenshots/Farmer%20Registeration.png)
 
 ### 2. Farmer Records
 ![Farmer Records](docs/screenshots/Farmer%20Records.png)
