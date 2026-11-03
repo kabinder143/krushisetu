@@ -14,6 +14,9 @@ The project integrates Java Spring Boot, PHP, Apache Kafka, PostgreSQL, Nginx, P
 - Infrastructure monitoring using Prometheus and Grafana.
 
 ## Architecture
+### Visual Architecture
+
+![KrushiSetu Event-Driven Platform Architecture](https://github.com/user-attachments/assets/7be03733-e1eb-45d6-b4de-fb0d9f11afe4)
 
 ```mermaid
 flowchart TD
