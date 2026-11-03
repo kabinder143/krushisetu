@@ -140,9 +140,16 @@ Developed and tested on Ubuntu 24.04 LTS running in a Proxmox LXC container.
 
 ## Author
 
-Infrastructure & DevOps Engineering Project
+**Kabinder Singh**  
+Infrastructure & DevOps Engineer
 
-KrushiSetu demonstrates the integration of backend development, event-driven architecture, databases, Linux infrastructure, and monitoring.
+**Profiles:**
+- LinkedIn: [Kabinder Singh](https://www.linkedin.com/in/kabinder-singh-21911888/)
+- GitHub: [kabinder143](https://github.com/kabinder143)
+
+**Project:** KrushiSetu – Event-Driven Farmer Benefit Management Platform
+
+KrushiSetu demonstrates the integration of backend development, event-driven architecture using Kafka, databases, Linux infrastructure, and monitoring.
 ---
 
 ## Application Screenshots
